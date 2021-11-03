@@ -23,6 +23,24 @@ app.use(express.urlencoded({
 }));
 
 
+//using the routes for a specific api
+app.use('/api/users', userRoutes);
+app.use('/api/users', allUsersRoutes);
+
+app.get('/api/users/:id', function(req, res) {
+  UserModel.findById(req.params.id)
+    .then(userFound => {
+      if(!userFound) { return res.status(404).end(); }
+      return res.status(200).json(userFound);
+    })
+    .catch(err => next(err));
+});
+
+// passport middleware
+passport.use('jwt', jwtStrategy);
+app.use(passport.initialize());
+
+
 //const db = env.mongoURI;
 // connect to mongodb / .env file 
 mongoose
@@ -36,15 +54,6 @@ mongoose
 app.get('/test', (req, res) => {
   res.send({ msg: 'Test route.' });
 });
-
-
-//using the routes for a specific api
-app.use('/api/users', userRoutes);
-app.use('/api/users', allUsersRoutes);
-
-// passport middleware
-passport.use('jwt', jwtStrategy);
-app.use(passport.initialize());
 
 
 app.listen(port, () => {

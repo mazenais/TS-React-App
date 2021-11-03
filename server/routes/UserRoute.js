@@ -3,12 +3,13 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import UserModel from '../models/UserModel.js';
 import passport from 'passport';
+import authenticate from '../middlewares/auth.js';
 
 
 const router = express.Router();
 
 
-
+//register
 router.post('/register', 
   (req, res) => {
       const reqemail = req.body.email;
@@ -48,7 +49,7 @@ router.post('/register',
 
 
  
-
+//log in 
 router.post("/login", (req, res) => {
        const reqemail = req.body.email;
        const reqpassword = req.body.password;
@@ -100,6 +101,18 @@ router.post("/login", (req, res) => {
     });
 });
 
-
+//getting a specific item/ profile
+router.get(
+    'users/:id',
+    authenticate,
+    passport.authenticate('jwt', { session: false }),
+     function (req, res) {
+      UserModel.findById(req.params.id)
+        .then(userFound => {
+            if(!userFound) { return res.status(404).end(); }
+            return res.status(200).json(userFound);
+        })
+        .catch(err => next(err));
+  });
 
 export default router
