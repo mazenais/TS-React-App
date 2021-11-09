@@ -4,7 +4,7 @@ import UserItem from './UserItem';
 
 interface user {
    
-        id: number,
+        _id: string,
         name: string, 
         age: number,
         url: string,
@@ -48,9 +48,9 @@ const AllUsersGrid = (props: any) => {
     return isLoading ? (
         <h1>Loading...</h1>
     ) : (
-        <section className="grid">
+        <section className="cards">
             {users && users.map((item) => (
-                <UserItem key={item.id} item={item}></UserItem>
+                <UserItem key={item._id} item={item}></UserItem>
             ))}
         </section>
     );
