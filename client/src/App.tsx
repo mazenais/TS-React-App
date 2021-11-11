@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Test from './components/Test';
 // import "bootstrap/dict/css/bootstrap.min.css";
@@ -10,21 +10,24 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import routes from './components/routes/routes';
 import IRoute from './interfaces/route';
+import { AuthContextProvider, AuthContext } from './components/context/AuthContext';
 
 
 
 const App : React.FC<{}> = () => {
   return ( 
-    <div>
+    <div className="container" style={{ height: "100%"}}>
+      <AuthContextProvider> 
       <Router>
       <Navbar />
-      <br />
-      <Route path="/" component={AllUsersGrid}/>
-      <Route path="/register" component={Register} />
+      <Switch> 
+      <Route exact path="/" component={AllUsersGrid}/>
+      <Route path="/register" component={Register}/>
       <Route path="/login" component={Login} /> 
       <Route path="/user/:id" component={MyProfile} />
+      </Switch>
     </Router>
-
+    </AuthContextProvider>
     </div>
   );
 }
