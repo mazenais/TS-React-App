@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import 'antd/dist/antd.css';
+
 
 interface Props {
     
@@ -18,7 +20,7 @@ const Navbar : React.FC = (props: Props) => {
           <Link to="/login" className="nav-link">Login</Link>
           </li>
           <li className="navbar-item">
-          <Link to="/user/:id" className="nav-link">My Profile</Link>
+          <Link to="/user/profile" className="nav-link">My Profile</Link>
           </li>
         </ul>
         </div>

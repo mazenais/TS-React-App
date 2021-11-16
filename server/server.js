@@ -7,6 +7,9 @@ import UserModel from './models/UserModel.js';
 import allUsersRoutes from './routes/AllUsersRoute.js';
 import { jwtStrategy } from './passport.js';
 import passport from "passport";
+import multer from "multer";
+import imageRoutes from "./routes/ImageRoute.js";
+import ImageModel from './models/ImageModel.js';
 
 
 dotenv.config();
@@ -26,6 +29,7 @@ app.use(express.urlencoded({
 //using the routes for a specific api
 app.use('/api/users', userRoutes);
 app.use('/api/users', allUsersRoutes);
+// app.use('/api/users/profile').post(protect, updateUserProfile)
 
 app.get('/api/users/:id', function(req, res) {
   UserModel.findById(req.params.id)
@@ -35,6 +39,43 @@ app.get('/api/users/:id', function(req, res) {
     })
     .catch(err => next(err));
 });
+
+// app.use('/api/users', imageRoutes);
+// Step 7 - the GET request handler that provides the HTML UI
+// app.get('/', function (req, res) {
+//   ImageModel.find({}, (err, items) => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).send('AnError Has Occurred', err);
+//     }
+//     else {
+//       res.render('imagesPage', { items: items });
+//     }
+//   });
+// });
+
+// Step 8 - the POST handler for processing the uploaded file
+// app.post('/', upload.single('image'), (req, res, next) => {
+  
+//   var obj = {
+//       name: req.body.name,
+//       desc: req.body.desc,
+//       img: {
+//           data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+//           contentType: 'image/png'
+//       }
+//   }
+//   imgModel.create(obj, (err, item) => {
+//       if (err) {
+//           console.log(err);
+//       }
+//       else {
+//           // item.save();
+//           res.redirect('/');
+//       }
+//   });
+// });
+
 
 // passport middleware
 passport.use('jwt', jwtStrategy);

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-
+import { Button } from 'react-bootstrap';
 interface Props {
 
 }
@@ -27,47 +27,57 @@ const Register = (props: Props) => {
   };
 
   return (
-  
+  <div> 
     <form onSubmit={handleSubmit}>
       <div>
-        <button className="return_button" onClick={handleHistory}>
+        <Button className="return_button" onClick={handleHistory}>
           back
-        </button>
+        </Button>
       </div>
-      <label>
-        <p>name</p>
+      <h3>Please fill in this form:</h3>
+      <label htmlFor="name" className="sr-only">
+        name:
+      </label>
         <input
           type="text"
           name="name"
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Name"
           value={state.name}
         />
+      
+      <label htmlFor="email" className="sr-only">
+        email:
       </label>
-      <label>
-        <p>email</p>
         <input
           type="email"
           name="email"
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Email"
           value={state.email}
         />
+      
+      <label htmlFor="password" className="sr-only">
+        password: 
       </label>
-      <label>
-        <p>password</p>
         <input
           type="password"
           name="password"
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Password"
           value={state.password}
         />
-      </label>
+      
       <div>
-        <button className="submit_button" type="submit">
+        <Button className="submit_button" type="submit">
           Submit
-        </button>
+        </Button>
       </div>
     </form>
-   
+  </div>
   );
 };
 

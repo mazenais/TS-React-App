@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import UserModel from '../models/UserModel.js';
@@ -53,7 +53,7 @@ router.post('/register',
 router.post("/login", (req, res) => {
        const reqemail = req.body.email;
        const reqpassword = req.body.password;
-
+    console.log("req", req);
     UserModel.findOne({ email: reqemail }, (err, user) => {
         if (err) {
             res.send(err);

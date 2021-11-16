@@ -1,6 +1,7 @@
 import axios, { Method } from 'axios';
 import React, { useState, useEffect } from 'react'
 import UserItem from './UserItem';
+import { Container } from 'react-bootstrap';
 
 interface user {
    
@@ -8,6 +9,7 @@ interface user {
         name: string, 
         age: number,
         url: string,
+        photo: string,
 
     } 
 type users = user[]

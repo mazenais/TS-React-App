@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
 import Test from './components/Test';
-// import "bootstrap/dict/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar/Navbar';
 import AllUsersGrid from './components/screens/AllUsersGrid';
 import MyProfile from './components/screens/MyProfile';
@@ -11,7 +10,9 @@ import Login from './components/auth/Login';
 import routes from './components/routes/routes';
 import IRoute from './interfaces/route';
 import { AuthContextProvider, AuthContext } from './components/context/AuthContext';
-
+import ProfilePicChanger from './components/pics/ProfilePicChanger'
+import 'antd/dist/antd.css';
+import './App.css';
 
 
 const App : React.FC<{}> = () => {
