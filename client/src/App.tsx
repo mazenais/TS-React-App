@@ -10,9 +10,9 @@ import Login from './components/auth/Login';
 import routes from './components/routes/routes';
 import IRoute from './interfaces/route';
 import { AuthContextProvider, AuthContext } from './components/context/AuthContext';
-import ProfilePicChanger from './components/pics/ProfilePicChanger'
 import 'antd/dist/antd.css';
 import './App.css';
+// import './style.css';
 
 
 const App : React.FC<{}> = () => {

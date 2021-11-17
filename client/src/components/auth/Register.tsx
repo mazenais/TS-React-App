@@ -30,7 +30,7 @@ const Register = (props: Props) => {
   <div> 
     <form onSubmit={handleSubmit}>
       <div>
-        <Button className="return_button" onClick={handleHistory}>
+        <Button variant="secondary" size="sm" onClick={handleHistory}>
           back
         </Button>
       </div>
@@ -72,7 +72,7 @@ const Register = (props: Props) => {
         />
       
       <div>
-        <Button className="submit_button" type="submit">
+        <Button variant="secondary" size="sm" type="submit">
           Submit
         </Button>
       </div>

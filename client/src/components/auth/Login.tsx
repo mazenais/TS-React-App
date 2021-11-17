@@ -61,7 +61,7 @@ const Login = (props: Props) => {
     <div>
       <form onSubmit={handleSubmit}>
       <div>
-        <Button className="return_button" onClick={handleHistory}>
+        <Button variant="secondary" size="sm" onClick={handleHistory}>
           back
         </Button>
       </div>
@@ -86,7 +86,7 @@ const Login = (props: Props) => {
           className="form-control"
           placeholder="Enter Password"
         />
-        <Button className="btn btn-primary btn-block" type="submit">
+        <Button variant="secondary" size="sm" type="submit">
           Log in
         </Button>
       </form>

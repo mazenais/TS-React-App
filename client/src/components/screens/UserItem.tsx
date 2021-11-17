@@ -26,7 +26,7 @@ const UserItem = (props: any) => {
       <div className="card">
         <div className="card-inner">
           <div className="card-front">
-            <h3>{props.item.name}</h3>
+            {/* <h3>{props.item.name}</h3> */}
             <img src={props.item.photo} alt="" height="100%" width="100%" className="img-fluid"/>
           </div>
           <div className="card-back">
