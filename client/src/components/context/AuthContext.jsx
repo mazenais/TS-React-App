@@ -15,7 +15,7 @@ export const AuthContextProvider = ({ children }) => {
   // }, [])
 
   const register = async ({ email, password, name }) => {
-    const res = await fetch("http://localhost:5000/api/users/register", {
+    const res = await fetch("http://localhost:5000/api/profile/register", {
       method: "post",
       body: JSON.stringify({email, password}),
       headers: {
@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
     console.log('data :>> ', data);
     const res = await axios( {
       method: "post",
-      url: 'http://localhost:5000/api/users/login',
+      url: 'http://localhost:5000/api/profile/login',
       data: qs.stringify(data),
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded',

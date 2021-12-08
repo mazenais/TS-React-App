@@ -51,7 +51,7 @@ const Login = (props: Props) => {
   console.log("state", state);
 
   const history = useHistory();
-  const handleHistory = () => {
+  const handleHistory = (e: { preventDefault: () => void; }) => {
     history.push("/");
   };
 

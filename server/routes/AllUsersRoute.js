@@ -9,7 +9,7 @@ const router = express.Router();
 
 /* get all users*/
 router.get('/', 
-    authenticate,
+    // authenticate,
     passport.authenticate("jwt", { session: false }),
   (req, res) => {
      UserModel.find()

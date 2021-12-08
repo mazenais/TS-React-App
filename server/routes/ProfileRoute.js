@@ -4,20 +4,21 @@ import jwt from "jsonwebtoken";
 import UserModel from '../models/UserModel.js';
 import passport from 'passport';
 import authenticate from '../middlewares/auth.js';
+import ProfileModel from '../models/ProfileModel.js';
 
 
 const router = express.Router();
 
 
 //register
-router.post('/profile/register', 
+router.post('/register', 
   (req, res) => {
       const reqemail = req.body.email;
       const reqpassword = req.body.password;
       const {name } = req.body;
       console.log(`req.body :>>`, req.body)
 
-      UserModel.findOne({ email: reqemail }, (err, user) => {
+      ProfileModel.findOne({ email: reqemail }, (err, user) => {
           if (err) {
               res.send(err);
           }
@@ -30,7 +31,7 @@ router.post('/profile/register',
                             res.send(err);
                         } else {
                             console.log('hash :>>', hash);
-                            const newUser = new UserModel({ name, email: reqemail, password: hash});
+                            const newUser = new ProfileModel({ name, email: reqemail, password: hash});
                             newUser
                             .save()
                             .then((user) => {
@@ -54,7 +55,7 @@ router.post("/login", (req, res) => {
        const reqemail = req.body.email;
        const reqpassword = req.body.password;
     console.log("req", req);
-    UserModel.findOne({ email: reqemail }, (err, user) => {
+    ProfileModel.findOne({ email: reqemail }, (err, user) => {
         if (err) {
             res.send(err);
         }
@@ -103,11 +104,11 @@ router.post("/login", (req, res) => {
 
 //getting a specific item/ profile
 router.get(
-    'users/:id',
+    'profile/:id',
     authenticate,
     passport.authenticate('jwt', { session: false }),
      function (req, res) {
-      UserModel.findById(req.params.id)
+      ProfileModel.findById(req.params.id)
         .then(userFound => {
             if(!userFound) { return res.status(404).end(); }
             return res.status(200).json(userFound);

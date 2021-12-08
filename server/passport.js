@@ -1,5 +1,5 @@
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
-import UserModel from "./models/UserModel.js";
+import ProfileModel from "./models/ProfileModel.js";
 import * as dotenv from 'dotenv';
 
 //loading .env file
@@ -25,7 +25,7 @@ const jwtOptions = {
 // });
 const jwtVerify = async (payload, next) => {
     try {
-        const user = await UserModel.findById(payload.id);
+        const user = await ProfileModel.findById(payload.id);
         console.log(user);
         if (!user) {
             return next(null, false);
